@@ -13,7 +13,7 @@ The red spheres above cars represent the (x,y) lidar detection and the purple li
 
 A filter is consistent if it provides a realistic estimation uncertainty. So I check my filter with an important consistency check called NIS(Normalized Innovation Square). The innovation is the difference between the predicted measurement and the actual measurement. And normalized means you put it into relation to the covariance matrix S. The NIS is just a scalar number.
 
-<div align=center><img src="./README.assets/NIS_1.png" width = "500" height = "250" alt="NIS_1.png" align=center /> </div>
+<div align=center><img src="./README.assets/NIS_1.png" width = "500" height = "200" alt="NIS_1.png" align=center /> </div>
 
 
 The NIS value follow a distribution which is called chi-square distribution. And this bellow table tells you the number you should expect for your NIS. DF means degrees of freedom. That is the dimensions of our measurement space. We have a three-dimensional radar measurement, so we have three degrees freedom, but two degrees for radar. 0.05 says statistically for Lidar, in 0.05% of all cases, your NIS will be greater than 7.815,  and similar to Radar.

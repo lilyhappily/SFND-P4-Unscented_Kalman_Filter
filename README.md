@@ -2,6 +2,7 @@
 In this project I implemented an Unscented Kalman Filter to estimate the state of multiple cars on a highway using noisy lidar and radar measurements.  My `px, py, vx, and vy RMSE` is less than the values [0.30, 0.16, 0.95, 0.70] after the simulator has ran for longer than 1 second.
 
 <div align=center><img src="./README.assets/myresult.gif" width = "600" height = "380" alt="myresult.gif.png" align=center /> </div>
+
 `main.cpp` is using `highway.h` to create a straight 3 lane highway environment with 3 traffic cars and the main ego car at the center. The viewer scene is centered around the ego car and the coordinate system is relative to the ego car as well. The ego car is green while the other traffic cars are blue. The traffic cars will be accelerating and altering their steering to change lanes. Each of the traffic car's has it's own UKF object generated for it, and will update each one during every time step. 
 
 The red spheres above cars represent the (x,y) lidar detection and the purple lines show the radar measurements with the velocity magnitude along the detected angle. The green spheres is tracking the traffic cars indicating estimated position and green magnitude arrows showing estimated velocity value and direction.  The Z axis is not taken into account for tracking, so I are only tracking along the X/Y axis.
@@ -17,7 +18,7 @@ A filter is consistent if it provides a realistic estimation uncertainty. So I c
 
 The NIS value follow a distribution which is called chi-square distribution. And this bellow table tells you the number you should expect for your NIS. DF means degrees of freedom. That is the dimensions of our measurement space. We have a three-dimensional radar measurement, so we have three degrees freedom, but two degrees for radar. 0.05 says statistically for Lidar, in 0.05% of all cases, your NIS will be greater than 7.815,  and similar to Radar.
 
-<div align=center><img src="./README.assets/chi-square.png" width = "600" height = "300" alt="chi-square.png" align=center /> </div>
+<div align=center><img src="./README.assets/chi-square.png" width = "500" height = "250" alt="chi-square.png" align=center /> </div>
 
 <div align=center><img src="./README.assets/NIS_2.png" width = "600" height = "450" alt="NIS_2.png" align=center /> </div>
 
@@ -69,7 +70,7 @@ int main(){
 }
 ```
 
-Lastly, I must adding the python package to the [CMakeLists.txt]() like this:
+Lastly, I must adding the python package to the [CMakeLists.txt](./CMakeLists.txt) like this:
 
 ```c++
 find_package(PythonLibs 2.7)
